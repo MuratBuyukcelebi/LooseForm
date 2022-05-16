@@ -51,9 +51,11 @@ export default {
     color: #fff;
     font-size: 20px;
     font-weight: bold;
+    transition: all 0.2s;
 
     &:hover {
       background-color: #42b883;
+      color: #1F1F1F;
     }
   }
 }
