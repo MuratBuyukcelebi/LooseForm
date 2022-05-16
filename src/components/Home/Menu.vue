@@ -3,57 +3,41 @@
   <div class="menu__title">
     Form Elements
   </div>
-  <div class="menu__list">
-    <div class="menu__list-item" v-for="(item, key) in list" :key="key">
-      {{ item.element }}
+  <draggable
+      class="dragArea list-group menu__list"
+      :list="list1"
+      :group="{ name: 'people', pull: 'clone', put: false }"
+      :clone="cloneDog"
+      @change="log"
+  >
+    <div class="list-group-item menu__list-item" v-for="element in list1" :key="element.id">
+      {{ element.name }}
     </div>
-  </div>
+  </draggable>
 </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
+
 export default {
   name: "Menu",
+  components: {
+    draggable
+  },
 
   data() {
     return {
-      list: [
-        {
-          element: "Input",
-        },
-        {
-          element: "Select",
-        },
-        {
-          element: "user",
-        },
-        {
-          element: "email",
-        },
-        {
-          element: "Input",
-        },
-        {
-          element: "Select",
-        },
-        {
-          element: "user",
-        },
-        {
-          element: "email",
-        },
-        {
-          element: "Input",
-        },
-        {
-          element: "Select",
-        },
-        {
-          element: "user",
-        },
-        {
-          element: "email",
-        },
+      list1: [
+        { name: "dog 1", id: 1 },
+        { name: "dog 2", id: 2 },
+        { name: "dog 3", id: 3 },
+        { name: "dog 4", id: 4 }
+      ],
+      list2: [
+        { name: "cat 5", id: 5 },
+        { name: "cat 6", id: 6 },
+        { name: "cat 7", id: 7 }
       ]
     }
   },
