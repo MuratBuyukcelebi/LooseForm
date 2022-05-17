@@ -11,7 +11,7 @@
               :list="list1"
               :clone="cloneDog"
               @change="log"
-              :group="{ name: 'people', pull: 'clone' }"
+              :group="{ name: 'people', pull: 'clone', put: false }"
               :move="onMove"
           >
             <div class="menu__list-item" v-for="element in list1" :key="element.id">
@@ -32,7 +32,7 @@
               {{ element.name }}
             </div>
           </draggable>
-          <div class="" v-if="list2.length === 0">
+          <div class="" v-if="list2.length <= 1">
             deneme
           </div>
         </div>
@@ -55,8 +55,6 @@ const message = [
 let idGlobal = 0;
 export default {
   name: 'Home',
-  display: "Custom Clone",
-  order: 3,
   components: {
     draggable,
     Input
@@ -67,7 +65,9 @@ export default {
       list1: message.map((name) => {
         return { name, fixed: true, id: idGlobal++ };
       }),
-      list2: []
+      list2: [
+        { name: "header", fixed: false, id: idGlobal++ }
+      ]
     }
   },
   methods: {
@@ -78,27 +78,27 @@ export default {
       if (id === 0) {
         return {
           id: idGlobal++,
-          name: "Input1"
+          name: "Input0"
         };
       } else if (id === 1) {
         return {
           id: idGlobal++,
-          name: "select2"
+          name: "select1"
         };
       } else if (id === 2) {
         return {
           id: idGlobal++,
-          name: "textarea3"
+          name: "textarea2"
         };
       } else if (id === 3) {
         return {
           id: idGlobal++,
-          name: "checkbox4"
+          name: "checkbox3"
         };
       } else if (id === 4) {
         return {
           id: idGlobal++,
-          name: "Header"
+          name: "Header4"
         };
       }
     },
