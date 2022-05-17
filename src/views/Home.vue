@@ -32,6 +32,9 @@
               {{ element.name }}
             </div>
           </draggable>
+          <div class="" v-if="list2.length === 0">
+            deneme
+          </div>
         </div>
       </div>
     </div>
@@ -46,6 +49,7 @@ const message = [
   "select",
   "textarea",
   "checkbox",
+  "header"
 ];
 
 let idGlobal = 0;
@@ -63,9 +67,7 @@ export default {
       list1: message.map((name) => {
         return { name, fixed: true, id: idGlobal++ };
       }),
-      list2: [
-        { name: "Header", id: 5 },
-      ]
+      list2: []
     }
   },
   methods: {
@@ -92,6 +94,11 @@ export default {
         return {
           id: idGlobal++,
           name: "checkbox4"
+        };
+      } else if (id === 4) {
+        return {
+          id: idGlobal++,
+          name: "Header"
         };
       }
     },
