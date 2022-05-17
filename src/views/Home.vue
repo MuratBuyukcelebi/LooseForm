@@ -95,11 +95,10 @@ export default {
         };
       }
     },
-    onMove({ relatedContext, draggedContext }) {
+    onMove({ relatedContext}) {
       const relatedElement = relatedContext.element;
-      const draggedElement = draggedContext.element;
       return (
-          (!relatedElement || !relatedElement.fixed) || !draggedElement.fixed
+          (!relatedElement || !relatedElement.fixed)
       );
     }
   }
