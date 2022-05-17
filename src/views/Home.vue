@@ -95,7 +95,7 @@ export default {
         };
       }
     },
-    onMove({ relatedContext}) {
+    onMove({ relatedContext }) {
       const relatedElement = relatedContext.element;
       return (
           (!relatedElement || !relatedElement.fixed)
