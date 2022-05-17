@@ -7,13 +7,13 @@
             Form Elements
           </div>
           <draggable
-              class="dragArea list-group"
+              class="dragArea list-group menu__list"
               :list="list1"
-              :group="{ name: 'people', pull: 'clone', put: false }"
               :clone="cloneDog"
               @change="log"
+              :group="{ name: 'people', pull: 'clone' }"
           >
-            <div class="menu__item" v-for="element in list1" :key="element.id">
+            <div class="menu__list-item" v-for="element in list1" :key="element.id" :style="{ 'order' : `${element.id}` }">
               {{ element.name }}
             </div>
           </draggable>
@@ -24,8 +24,8 @@
           <draggable
               class="dragArea list-group"
               :list="list2"
-              group="people"
               @change="log"
+              group="people"
           >
             <div class="form__item" v-for="element in list2" :key="element.id">
               {{ element.name }}
@@ -38,7 +38,7 @@
 </template>
 <script>
 import draggable from "vuedraggable";
-let idGlobal = 8;
+let idGlobal = 0;
 export default {
   name: 'Home',
   display: "Custom Clone",
@@ -53,7 +53,7 @@ export default {
         { name: "Input", id: 1 },
         { name: "select", id: 2 },
         { name: "textarea", id: 3 },
-        { name: "checkbox", id: 4 }
+        { name: "checkbox", id: 4 },
       ],
       list2: [
         { name: "Header", id: 5 },
@@ -108,21 +108,26 @@ export default {
     padding-bottom: 24px;
     border-bottom: 2px solid #42b883;
   }
-  &__item {
-    position: relative;
-    display: block;
-    border-bottom: 1px solid #42b883;
-    padding: 16px;
-    transition: all 0.2s ease-in-out;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    overflow-y: auto;
+    height: 500px;
 
-    &:hover {
-      background-color: #1F1F1F;
-    }
-    &:last-child {
-      border-bottom: none;
+    &-item {
+      position: relative;
+      display: block;
+      border-bottom: 1px solid #42b883;
+      padding: 16px;
+      transition: all 0.2s ease-in-out;
+      font-size: 16px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #1F1F1F;
+      }
     }
   }
 }
