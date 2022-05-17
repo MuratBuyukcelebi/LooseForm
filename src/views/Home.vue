@@ -12,8 +12,9 @@
               :clone="cloneDog"
               @change="log"
               :group="{ name: 'people', pull: 'clone' }"
+              :move="onMove"
           >
-            <div class="menu__list-item" v-for="element in list1" :key="element.id" :style="{ 'order' : `${element.id}` }">
+            <div class="menu__list-item" v-for="element in list1" :key="element.id">
               {{ element.name }}
             </div>
           </draggable>
@@ -38,23 +39,30 @@
 </template>
 <script>
 import draggable from "vuedraggable";
+import Input from "../components/Form/Input.vue";
+
+const message = [
+  "Input",
+  "select",
+  "textarea",
+  "checkbox",
+];
+
 let idGlobal = 0;
 export default {
   name: 'Home',
   display: "Custom Clone",
   order: 3,
   components: {
-    draggable
+    draggable,
+    Input
   },
 
   data() {
     return {
-      list1: [
-        { name: "Input", id: 1 },
-        { name: "select", id: 2 },
-        { name: "textarea", id: 3 },
-        { name: "checkbox", id: 4 },
-      ],
+      list1: message.map((name) => {
+        return { name, fixed: true, id: idGlobal++ };
+      }),
       list2: [
         { name: "Header", id: 5 },
       ]
@@ -65,27 +73,34 @@ export default {
       window.console.log(evt);
     },
     cloneDog({ id }) {
-      if (id === 1) {
+      if (id === 0) {
         return {
           id: idGlobal++,
           name: "Input1"
         };
-      } else if (id === 2) {
+      } else if (id === 1) {
         return {
           id: idGlobal++,
           name: "select2"
         };
-      } else if (id === 3) {
+      } else if (id === 2) {
         return {
           id: idGlobal++,
           name: "textarea3"
         };
-      } else if (id === 4) {
+      } else if (id === 3) {
         return {
           id: idGlobal++,
           name: "checkbox4"
         };
       }
+    },
+    onMove({ relatedContext, draggedContext }) {
+      const relatedElement = relatedContext.element;
+      const draggedElement = draggedContext.element;
+      return (
+          (!relatedElement || !relatedElement.fixed) || !draggedElement.fixed
+      );
     }
   }
 }
