@@ -55,7 +55,9 @@ export default {
         { name: "textarea", id: 3 },
         { name: "checkbox", id: 4 }
       ],
-      list2: []
+      list2: [
+        { name: "Header", id: 5 },
+      ]
     }
   },
   methods: {
