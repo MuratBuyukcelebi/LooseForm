@@ -20,6 +20,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  border-radius: 4px;
 
   &__actions {
     position: absolute;
