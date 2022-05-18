@@ -21,20 +21,20 @@
         </div>
       </div>
       <div class="col-8">
-        <div class="form">
+        <div class="form position-relative">
+          <div class="d-flex justify-content-center align-items-center fs-3" v-if="list2.length === 0">
+            PUT IN
+          </div>
           <draggable
-              class="dragArea list-group"
+              class="dragArea list-group w-100 py-4 form__list"
               :list="list2"
               @change="log"
               group="people"
           >
-            <div class="form__item" v-for="element in list2" :key="element.id">
-              {{ element.name }}
+            <div v-for="element in list2" :key="element.id">
+              <Options :id="element.id" />
             </div>
           </draggable>
-          <div class="" v-if="list2.length <= 1">
-            deneme
-          </div>
         </div>
       </div>
     </div>
@@ -42,11 +42,11 @@
 </template>
 <script>
 import draggable from "vuedraggable";
-import Input from "../components/Form/Input.vue";
+import Options from "../components/Form/Options.vue";
 
 const message = [
+  "Header",
   "Input",
-  "select",
   "textarea",
   "checkbox",
   "header"
@@ -57,7 +57,7 @@ export default {
   name: 'Home',
   components: {
     draggable,
-    Input
+    Options
   },
 
   data() {
@@ -65,9 +65,7 @@ export default {
       list1: message.map((name) => {
         return { name, fixed: true, id: idGlobal++ };
       }),
-      list2: [
-        { name: "header", fixed: false, id: idGlobal++ }
-      ]
+      list2: []
     }
   },
   methods: {
@@ -77,28 +75,23 @@ export default {
     cloneDog({ id }) {
       if (id === 0) {
         return {
-          id: idGlobal++,
-          name: "Input0"
+          id: 0,
         };
       } else if (id === 1) {
         return {
-          id: idGlobal++,
-          name: "select1"
+          id: 1,
         };
       } else if (id === 2) {
         return {
-          id: idGlobal++,
-          name: "textarea2"
+          id: 2,
         };
       } else if (id === 3) {
         return {
-          id: idGlobal++,
-          name: "checkbox3"
+          id: 3,
         };
       } else if (id === 4) {
         return {
-          id: idGlobal++,
-          name: "Header4"
+          id: 4,
         };
       }
     },
@@ -107,7 +100,7 @@ export default {
       return (
           (!relatedElement || !relatedElement.fixed)
       );
-    }
+    },
   }
 }
 </script>
@@ -160,22 +153,10 @@ export default {
   border: 2px solid #42b883;
   border-radius: 8px;
 
-  &__item {
-    position: relative;
-    display: block;
-    border-bottom: 1px solid #42b883;
-    padding: 16px;
-    transition: all 0.2s ease-in-out;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #1F1F1F;
-    }
-    &:last-child {
-      border-bottom: none;
-    }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 </style>
