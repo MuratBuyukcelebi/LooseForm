@@ -31,11 +31,10 @@
               @change="log"
               group="people"
           >
-            <div v-for="element in list2" :key="element.id">
-              <ItemSettings>
-                <Options :name="element.name" />
-              </ItemSettings>
-            </div>
+            <ItemSettings :key="element.id" v-for="(element, index) in list2">
+              <Options :name="element.name" />
+              <button @click="remove(index)">31</button>
+            </ItemSettings>
           </draggable>
         </div>
       </div>
@@ -69,12 +68,18 @@ export default {
       list1: message.map((name) => {
         return { name, fixed: true, id: idGlobal++ };
       }),
-      list2: []
+      list2: [
+        { name: "Header", id: idGlobal++ },
+        { name: "Input", id: idGlobal++ },
+      ]
     }
   },
   methods: {
     log: function(evt) {
       window.console.log(evt);
+    },
+    remove(index) {
+      this.$delete(this.list2, index);
     },
     cloneDog({ id }) {
       if (id === 0) {
