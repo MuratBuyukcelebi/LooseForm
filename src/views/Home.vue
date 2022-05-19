@@ -32,7 +32,9 @@
               group="people"
           >
             <div v-for="element in list2" :key="element.id">
-              <Options :id="element.id" />
+              <ItemSettings>
+                <Options :name="element.name" />
+              </ItemSettings>
             </div>
           </draggable>
         </div>
@@ -43,6 +45,7 @@
 <script>
 import draggable from "vuedraggable";
 import Options from "../components/Form/Options.vue";
+import ItemSettings from "../components/Form/Settings/ItemSettings.vue";
 
 const message = [
   "Header",
@@ -57,7 +60,8 @@ export default {
   name: 'Home',
   components: {
     draggable,
-    Options
+    Options,
+    ItemSettings
   },
 
   data() {
@@ -75,23 +79,28 @@ export default {
     cloneDog({ id }) {
       if (id === 0) {
         return {
-          id: 0,
+          name: "Header",
+          id: idGlobal++,
         };
       } else if (id === 1) {
         return {
-          id: 1,
+          name: "Input",
+          id: idGlobal++,
         };
       } else if (id === 2) {
         return {
-          id: 2,
+          name: "Header",
+          id: idGlobal++,
         };
       } else if (id === 3) {
         return {
-          id: 3,
+          name: "Header",
+          id: idGlobal++,
         };
       } else if (id === 4) {
         return {
-          id: 4,
+          name: "Header",
+          id: idGlobal++,
         };
       }
     },

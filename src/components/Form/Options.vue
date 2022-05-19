@@ -1,11 +1,7 @@
 <template>
-  <div class="">
-    <Header v-if="id === 0" />
-    <Input v-else-if="id === 1">31</Input>
-    <div v-else-if="id === 2">22</div>
-    <div v-else-if="id === 3">31</div>
-    <div v-else-if="id === 4">222</div>
-    <div v-else-if="id === 5">2233</div>
+  <div>
+    <Header v-if="name === 'Header'" />
+    <Input v-else-if="name === 'Input'" />
   </div>
 </template>
 
@@ -20,10 +16,10 @@ export default {
     Input
   },
   props: {
-    id: {
-      type: Number,
+    name: {
+      type: String,
       required: true
-    }
+    },
   }
 }
 </script>
