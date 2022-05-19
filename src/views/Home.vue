@@ -31,9 +31,8 @@
               @change="log"
               group="people"
           >
-            <ItemSettings :key="element.id" v-for="(element, index) in list2">
+            <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)">
               <Options :name="element.name" />
-              <button @click="remove(index)">31</button>
             </ItemSettings>
           </draggable>
         </div>
