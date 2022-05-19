@@ -21,6 +21,7 @@ export default {
   display: flex;
   align-items: center;
   border-radius: 4px;
+  border-color: #2f8f72;
 
   &__actions {
     position: absolute;
