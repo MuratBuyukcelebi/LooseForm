@@ -56,7 +56,7 @@ export default {
 
   &:hover {
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #2f8f72;
   }
   &:hover & {
     &__actions {
