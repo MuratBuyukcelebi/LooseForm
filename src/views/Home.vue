@@ -1,42 +1,45 @@
 <template>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-4">
-        <div class="menu">
-          <div class="menu__title">
-            Form Elements
-          </div>
-          <draggable
-              class="dragArea list-group menu__list"
-              :list="list1"
-              :clone="cloneDog"
-              @change="log"
-              :group="{ name: 'people', pull: 'clone', put: false }"
-              :move="onMove"
-          >
-            <div class="menu__list-item" v-for="element in list1" :key="element.id">
-              {{ element.name }}
+  <div class="position-relative">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-4">
+          <div class="menu">
+            <div class="menu__title">
+              Form Elements
             </div>
-          </draggable>
-        </div>
-      </div>
-      <div class="col-8">
-        <div class="form position-relative">
-          <div class="d-flex justify-content-center align-items-center fs-3" v-if="list2.length === 0">
-            PUT IN
+            <draggable
+                class="dragArea list-group menu__list"
+                :list="list1"
+                :clone="cloneDog"
+                @change="log"
+                :group="{ name: 'people', pull: 'clone', put: false }"
+                :move="onMove"
+            >
+              <div class="menu__list-item" v-for="element in list1" :key="element.id">
+                {{ element.name }}
+              </div>
+            </draggable>
           </div>
-          <draggable
-              class="dragArea list-group w-100 py-4 form__list"
-              :list="list2"
-              @change="log"
-              group="people"
-          >
-            <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)">
-              <Options :name="element.name" />
-            </ItemSettings>
-          </draggable>
+        </div>
+        <div class="col-8">
+          <div class="form position-relative">
+            <div class="d-flex justify-content-center align-items-center fs-3" v-if="list2.length === 0">
+              PUT IN
+            </div>
+            <draggable
+                class="dragArea list-group w-100 py-4 form__list"
+                :list="list2"
+                @change="log"
+                group="people"
+            >
+              <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)">
+                <Options :name="element.name" />
+              </ItemSettings>
+            </draggable>
+          </div>
         </div>
       </div>
+      <Settings />
     </div>
   </div>
 </template>
@@ -44,19 +47,20 @@
 import draggable from "vuedraggable";
 import Options from "../components/Form/Options.vue";
 import ItemSettings from "../components/Form/Settings/ItemSettings.vue";
+import Settings from "@/components/Form/Settings/Settings";
 
 const message = [
   "Header",
   "Input",
   "textarea",
   "checkbox",
-  "header"
 ];
 
 let idGlobal = 0;
 export default {
   name: 'Home',
   components: {
+    Settings,
     draggable,
     Options,
     ItemSettings
@@ -70,7 +74,7 @@ export default {
       list2: [
         { name: "Header", id: idGlobal++ },
         { name: "Input", id: idGlobal++ },
-      ]
+      ],
     }
   },
   methods: {
@@ -97,11 +101,6 @@ export default {
           id: idGlobal++,
         };
       } else if (id === 3) {
-        return {
-          name: "Header",
-          id: idGlobal++,
-        };
-      } else if (id === 4) {
         return {
           name: "Header",
           id: idGlobal++,
