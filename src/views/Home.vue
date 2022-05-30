@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <Settings :active="settingsOpen" />
+      <Settings :active="settingsOpen" :option="itemOption" />
     </div>
   </div>
 </template>
@@ -76,6 +76,10 @@ export default {
         { name: "Input", id: idGlobal++ },
       ],
       settingsOpen: false,
+      itemOption: {
+        name: "",
+        id: ""
+      }
     }
   },
   methods: {
@@ -87,9 +91,11 @@ export default {
       this.$delete(this.list2, index);
     },
     option(name, id) {
-      this.settingsOpen = !this.settingsOpen;
       console.log(name);
       console.log(id);
+      this.itemOption.name = name;
+      this.itemOption.id = id;
+      this.settingsOpen = !this.settingsOpen;
     },
     cloneDog({ id }) {
       if (id === 0) {

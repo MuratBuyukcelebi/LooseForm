@@ -1,7 +1,7 @@
 <template>
   <div class="settings" :class="{ active : active === true}">
     <!--TEXT-->
-    <div class="settings__title">Text Settings</div>
+    <div class="settings__title">{{ option.name + option.id }}</div>
     <input type="range" min="12" max="48" value="14" class="settings__range" @change="range">
     <span id="rangeNumber">14</span>
   </div>
@@ -15,6 +15,16 @@ export default {
     active: {
       type: Boolean,
       default: false,
+    },
+    option: {
+      type: Object,
+
+      name: {
+        type: String,
+      },
+      id: {
+        type: String,
+      },
     },
   },
   methods: {
