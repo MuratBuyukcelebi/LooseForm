@@ -32,7 +32,7 @@
                 @change="log"
                 group="people"
             >
-              <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)">
+              <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)" @option="option(element.name, element.id)">
                 <Options :name="element.name" />
               </ItemSettings>
             </draggable>
@@ -83,6 +83,10 @@ export default {
     },
     remove(index) {
       this.$delete(this.list2, index);
+    },
+    option(name, id) {
+      console.log(name);
+      console.log(id);
     },
     cloneDog({ id }) {
       if (id === 0) {
