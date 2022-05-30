@@ -83,6 +83,7 @@ export default {
       window.console.log(evt);
     },
     remove(index) {
+      this.settingsOpen = false;
       this.$delete(this.list2, index);
     },
     option(name, id) {
