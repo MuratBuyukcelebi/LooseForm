@@ -122,9 +122,7 @@ export default {
     },
     onMove({ relatedContext }) {
       const relatedElement = relatedContext.element;
-      return (
-          (!relatedElement || !relatedElement.fixed)
-      );
+      return ((!relatedElement || !relatedElement.fixed));
     },
   }
 }
@@ -133,7 +131,6 @@ export default {
 .home {
   padding: 48px 0;
   position: relative;
-  overflow-x: clip;
 
   &-menu {
     display: flex;

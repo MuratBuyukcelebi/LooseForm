@@ -40,13 +40,15 @@ export default {
 .settings {
   position: absolute;
   top: 48px;
-  height: 100%;
-  border: 2px solid #42b883;
   border-radius: 8px;
-  padding: 24px;
   right: 0;
-  transform: translateX(100%);
   transition: all 0.2s;
+  height: 100%;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
 
   &__title {
     font-size: 24px;
@@ -58,12 +60,12 @@ export default {
     -webkit-appearance: none;
     width: 100%;
     height: 16px;
-    background: #fff;
+    background: #1F1F1F;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-    border-radius: 8px;
+    border-radius: 6px;
 
     &:hover {
       opacity: 1;
@@ -76,11 +78,11 @@ export default {
       height: 20px;
       background: #42b883;
       cursor: pointer;
-      border-radius: 50%;
+      border-radius: 6px;
     }
 
     &::-moz-range-thumb {
-      border-radius: 50%;
+      border-radius: 6px;
       width: 20px;
       height: 20px;
       background: #42b883;
@@ -89,7 +91,10 @@ export default {
   }
 
   &.active {
-    transform: translateX(0);
+    opacity: 1;
+    width: 260px;
+    border: 2px solid #42b883;
+    padding: 24px;
   }
 }
 </style>
