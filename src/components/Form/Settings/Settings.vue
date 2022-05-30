@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div class="settings" :class="{ active : active === true}">
     <!--TEXT-->
     <div class="settings__title">Text Settings</div>
     <input type="range" min="12" max="48" value="14" class="settings__range" @change="range">
@@ -11,6 +11,12 @@
 export default {
   name: "Settings",
 
+  props: {
+    active: {
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
     range(e) {
       this.e = e.target.value;
@@ -24,11 +30,13 @@ export default {
 .settings {
   position: absolute;
   top: 48px;
-  right: 0;
   height: 100%;
   border: 2px solid #42b883;
   border-radius: 8px;
   padding: 24px;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.2s;
 
   &__title {
     font-size: 24px;
@@ -68,6 +76,10 @@ export default {
       background: #42b883;
       cursor: pointer;
     }
+  }
+
+  &.active {
+    transform: translateX(0);
   }
 }
 </style>
