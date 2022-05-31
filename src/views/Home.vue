@@ -93,6 +93,7 @@ export default {
     option(name, id) {
       console.log(name);
       console.log(id);
+      this.itemId = id;
       this.settingsOpen = !this.settingsOpen;
     },
     cloneDog({ id }) {
@@ -124,9 +125,12 @@ export default {
     },
     size(size) {
       this.list2.find((element) => {
-        element.textSize = size;
+        if (element.id === this.itemId) {
+          element.textSize = size;
+        }
+        return element;
       });
-      console.log(size);
+      console.log(this.itemId + size);
     }
   }
 }
