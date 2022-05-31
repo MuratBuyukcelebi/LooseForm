@@ -87,15 +87,6 @@ export default {
     }
   },
   methods: {
-    size(size) {
-      this.list2.forEach((element) => {
-        if (element.id === this.settingsId) {
-          element.textSize = size;
-          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
-        }
-        return element;
-      });
-    },
     log: function(evt) {
       window.console.log(evt);
     },
@@ -136,6 +127,15 @@ export default {
     onMove({ relatedContext }) {
       const relatedElement = relatedContext.element;
       return ((!relatedElement || !relatedElement.fixed));
+    },
+    size(size) {
+      this.list2.forEach((element) => {
+        if (element.id === this.settingsId) {
+          element.textSize = size;
+          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
+        }
+        return element;
+      });
     },
   }
 }
