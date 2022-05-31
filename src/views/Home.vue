@@ -37,13 +37,16 @@
                   @remove="remove(index)"
                   @option="option(element.name, element.id)"
               >
+                <span>{{ element.id }}</span>
                 <Options :name="element.name" :size="element.textSize" />
               </ItemSettings>
             </draggable>
           </div>
         </div>
       </div>
-      <Settings :active="settingsOpen" @size="size" />
+      <Settings :active="settingsOpen" @size="size">
+        {{ settingsId }}
+      </Settings>
     </div>
   </div>
 </template>
@@ -83,6 +86,15 @@ export default {
     }
   },
   methods: {
+    size(size) {
+      this.list2.forEach((element) => {
+        if (element.id === this.settingsId) {
+          element.textSize = size;
+          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
+        }
+        return element;
+      });
+    },
     log: function(evt) {
       window.console.log(evt);
     },
@@ -96,15 +108,6 @@ export default {
       console.log(id);
       //this.settingsOpen = !this.settingsOpen;
       this.settingsOpen = true;
-    },
-    size(size) {
-      this.list2.forEach((element) => {
-        if (element.id === this.settingsId) {
-          element.textSize = size;
-          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
-        }
-        return element;
-      });
     },
     cloneDog({ id }) {
       if (id === 0) {
