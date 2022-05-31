@@ -22,6 +22,7 @@ export default {
   align-items: center;
   border-radius: 4px;
   border-color: #2f8f72;
+  min-height: 126px;
 
   &__actions {
     position: absolute;
