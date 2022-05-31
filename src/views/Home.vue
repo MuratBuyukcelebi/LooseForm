@@ -101,7 +101,7 @@ export default {
       this.list2.forEach((element) => {
         if (element.id === this.settingsId) {
           element.textSize = size;
-          console.log(this.settingsId + " " + element.id + element.textSize);
+          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
         }
         return element;
       });
