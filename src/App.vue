@@ -17,6 +17,7 @@
 }
 body {
   background-color: #0F0F0F !important;
+  overflow: hidden;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
