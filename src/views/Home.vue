@@ -91,10 +91,20 @@ export default {
       this.$delete(this.list2, index);
     },
     option(name, id) {
-      console.log(name);
+      this.settingsId = id;
+      this.$forceUpdate();
       console.log(id);
-      this.itemId = id;
-      this.settingsOpen = !this.settingsOpen;
+      //this.settingsOpen = !this.settingsOpen;
+      this.settingsOpen = true;
+    },
+    size(size) {
+      this.list2.forEach((element) => {
+        if (element.id === this.settingsId) {
+          element.textSize = size;
+          console.log(this.settingsId + " " + element.id + element.textSize);
+        }
+        return element;
+      });
     },
     cloneDog({ id }) {
       if (id === 0) {
@@ -123,9 +133,6 @@ export default {
       const relatedElement = relatedContext.element;
       return ((!relatedElement || !relatedElement.fixed));
     },
-    size(size) {
-      console.log(this.itemId + size);
-    }
   }
 }
 </script>
