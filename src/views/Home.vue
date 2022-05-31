@@ -79,8 +79,9 @@ export default {
         return { name, fixed: true, id: idGlobal++ };
       }),
       list2: [
+        { name: "Header", id: idGlobal++, textSize: 'lg', },
         { name: "Header", id: idGlobal++, textSize: 'md', },
-        { name: "Input", id: idGlobal++ },
+        { name: "Header", id: idGlobal++, textSize: 'sm', },
       ],
       settingsOpen: false,
     }
