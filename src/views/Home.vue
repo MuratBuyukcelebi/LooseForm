@@ -123,17 +123,9 @@ export default {
       const relatedElement = relatedContext.element;
       return ((!relatedElement || !relatedElement.fixed));
     },
-    //shit code DONT USE
     size(size) {
-      this.list2.find((element) => {
-        if (element.id === this.itemId) {
-          element.textSize = size;
-        }
-        return element;
-      });
       console.log(this.itemId + size);
     }
-    //shit code DONT USE
   }
 }
 </script>
