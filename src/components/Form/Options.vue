@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header v-if="name === 'Header'" />
+    <Header :size="size" v-if="name === 'Header'" />
     <Input v-else-if="name === 'Input'" />
   </div>
 </template>
@@ -20,6 +20,13 @@ export default {
       type: String,
       required: true
     },
+    size: {
+      type: String,
+      default: "md",
+      validator(value) {
+        return ["sm", "md", "lg"].includes(value);
+      }
+    }
   }
 }
 </script>

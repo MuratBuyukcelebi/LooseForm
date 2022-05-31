@@ -32,14 +32,18 @@
                 @change="log"
                 group="people"
             >
-              <ItemSettings :key="element.id" v-for="(element, index) in list2" @remove="remove(index)" @option="option(element.name, element.id)">
-                <Options :name="element.name" />
+              <ItemSettings
+                  :key="element.id" v-for="(element, index) in list2"
+                  @remove="remove(index)"
+                  @option="option(element.name, element.id)"
+              >
+                <Options :name="element.name" :size="element.textSize" />
               </ItemSettings>
             </draggable>
           </div>
         </div>
       </div>
-      <Settings :active="settingsOpen" :option="itemOption" />
+      <Settings :active="settingsOpen" @size="size" />
     </div>
   </div>
 </template>
@@ -72,14 +76,10 @@ export default {
         return { name, fixed: true, id: idGlobal++ };
       }),
       list2: [
-        { name: "Header", id: idGlobal++ },
+        { name: "Header", id: idGlobal++, textSize: 'md', },
         { name: "Input", id: idGlobal++ },
       ],
       settingsOpen: false,
-      itemOption: {
-        name: "",
-        id: ""
-      }
     }
   },
   methods: {
@@ -93,8 +93,6 @@ export default {
     option(name, id) {
       console.log(name);
       console.log(id);
-      this.itemOption.name = name;
-      this.itemOption.id = id;
       this.settingsOpen = !this.settingsOpen;
     },
     cloneDog({ id }) {
@@ -124,6 +122,12 @@ export default {
       const relatedElement = relatedContext.element;
       return ((!relatedElement || !relatedElement.fixed));
     },
+    size(size) {
+      this.list2.find((element) => {
+        element.textSize = size;
+      });
+      console.log(size);
+    }
   }
 }
 </script>
