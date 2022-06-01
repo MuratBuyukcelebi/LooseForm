@@ -37,7 +37,7 @@
                   @remove="remove(index)"
                   @option="option(element.name, element.id)"
               >
-                <Options :name="element.name" :size="element.textSize"/>
+                <component :is="element.name" :size="element.textSize"/>
               </ItemSettings>
             </draggable>
           </div>
@@ -51,9 +51,10 @@
 </template>
 <script>
 import draggable from "vuedraggable";
-import Options from "../components/Form/Options.vue";
 import ItemSettings from "../components/Form/Settings/ItemSettings.vue";
 import Settings from "@/components/Form/Settings/Settings";
+import Header from "@/components/Form/Options/Header";
+import Input from "@/components/Form/Options/Input.vue";
 
 const message = [
   "Header",
@@ -68,8 +69,9 @@ export default {
   components: {
     Settings,
     draggable,
-    Options,
-    ItemSettings
+    ItemSettings,
+    Input,
+    Header,
   },
 
   data() {
