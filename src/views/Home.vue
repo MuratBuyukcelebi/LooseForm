@@ -79,9 +79,21 @@ export default {
         return { name, fixed: true, id: idGlobal++ };
       }),
       list2: [
-        { name: "Header", id: idGlobal++, textSize: 'lg', },
-        { name: "Header", id: idGlobal++, textSize: 'md', },
-        { name: "Header", id: idGlobal++, textSize: 'sm', },
+        {
+          name: "Header",
+          id: idGlobal++,
+          textSize: "lg",
+        },
+        {
+          name: "Header",
+          id: idGlobal++,
+          textSize: "md",
+        },
+        {
+          name: "Header",
+          id: idGlobal++,
+          textSize: "sm",
+        },
       ],
       settingsOpen: false,
     }
@@ -98,14 +110,14 @@ export default {
       this.settingsId = id;
       this.$forceUpdate();
       console.log(id);
-      //this.settingsOpen = !this.settingsOpen;
-      this.settingsOpen = true;
+      this.settingsOpen = !this.settingsOpen;
     },
     cloneDog({ id }) {
       if (id === 0) {
         return {
           name: "Header",
           id: idGlobal++,
+          textSize: 'md',
         };
       } else if (id === 1) {
         return {
@@ -116,11 +128,13 @@ export default {
         return {
           name: "Header",
           id: idGlobal++,
+          textSize: 'md',
         };
       } else if (id === 3) {
         return {
           name: "Header",
           id: idGlobal++,
+          textSize: 'md',
         };
       }
     },
