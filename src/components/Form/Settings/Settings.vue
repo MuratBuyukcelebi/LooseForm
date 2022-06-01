@@ -23,12 +23,6 @@ export default {
       default: false,
     },
   },
-  methods: {
-    range(e) {
-      this.e = e.target.value;
-      document.getElementById("rangeNumber").innerHTML = this.e;
-    }
-  },
 }
 </script>
 
