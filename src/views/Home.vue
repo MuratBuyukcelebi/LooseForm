@@ -37,7 +37,6 @@
                   @remove="remove(index)"
                   @option="option(element.name, element.id)"
               >
-                <span>{{ element.id }}</span>
                 <Options :name="element.name" :size="element.textSize"/>
               </ItemSettings>
             </draggable>

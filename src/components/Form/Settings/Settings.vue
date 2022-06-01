@@ -1,6 +1,5 @@
 <template>
   <div class="settings" :class="{ active : active === true}">
-    <slot/>
     <div class="settings-item">
       <!--Tittle-->
       <div class="settings-item__title">Title Size</div>
