@@ -17,7 +17,7 @@
 }
 body {
   background-color: #0F0F0F !important;
-  overflow: hidden;
+  overflow-x: clip;
   word-break: break-word;
 }
 #app {

@@ -38,7 +38,7 @@
                   @option="option(element.name, element.id)"
               >
                 <span>{{ element.id }}</span>
-                <Options :name="element.name" :size="element.textSize" />
+                <Options :name="element.name" :size="element.textSize"/>
               </ItemSettings>
             </draggable>
           </div>
@@ -96,6 +96,7 @@ export default {
         },
       ],
       settingsOpen: false,
+      settingsId: "",
     }
   },
   methods: {
