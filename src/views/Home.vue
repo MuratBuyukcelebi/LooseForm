@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <Settings :active="settingsOpen" @size="size">
+      <Settings :active="settingsOpen" :selected-option="settingsName" @size="size" >
         {{ settingsId }}
       </Settings>
     </div>
@@ -98,6 +98,7 @@ export default {
       ],
       settingsOpen: false,
       settingsId: "",
+      settingsName: "",
     }
   },
   methods: {
@@ -110,6 +111,7 @@ export default {
     },
     option(name, id) {
       this.settingsId = id;
+      this.settingsName = name;
       this.$forceUpdate();
       console.log(id);
       this.settingsOpen = !this.settingsOpen;
