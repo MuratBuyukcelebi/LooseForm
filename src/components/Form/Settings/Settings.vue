@@ -1,7 +1,7 @@
 <template>
   <div class="settings" :class="{ active : active === true}">
     <!--Text Size-->
-    <div class="settings-item" v-if="selectedOption === 'Header'">
+    <div class="settings-item" v-if="selectedOption === 'Header' || 'Input'">
       <div class="settings-item__title">Title Size</div>
       <div class="settings-item__actions">
         <button @click="$emit('size', 'md')">Default</button>
