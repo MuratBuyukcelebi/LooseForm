@@ -37,7 +37,7 @@
                   @remove="remove(index)"
                   @option="option(element.name, element.id)"
               >
-                <component :is="element.name" :size="element.textSize"/>
+                <component :is="element.name" :size="element.size"/>
               </ItemSettings>
             </draggable>
           </div>
@@ -83,17 +83,12 @@ export default {
         {
           name: "Header",
           id: idGlobal++,
-          textSize: "lg",
+          size: "lg",
         },
         {
-          name: "Header",
+          name: "Input",
           id: idGlobal++,
-          textSize: "md",
-        },
-        {
-          name: "Header",
-          id: idGlobal++,
-          textSize: "sm",
+          size: "md",
         },
       ],
       settingsOpen: false,
@@ -121,24 +116,25 @@ export default {
         return {
           name: "Header",
           id: idGlobal++,
-          textSize: 'md',
+          size: 'md',
         };
       } else if (id === 1) {
         return {
           name: "Input",
           id: idGlobal++,
+          size: 'md',
         };
       } else if (id === 2) {
         return {
           name: "Header",
           id: idGlobal++,
-          textSize: 'md',
+          size: 'md',
         };
       } else if (id === 3) {
         return {
           name: "Header",
           id: idGlobal++,
-          textSize: 'md',
+          size: 'md',
         };
       }
     },
@@ -149,8 +145,8 @@ export default {
     size(size) {
       this.list2.forEach((element) => {
         if (element.id === this.settingsId) {
-          element.textSize = size;
-          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.textSize);
+          element.size = size;
+          console.log( "SettingsID: " + this.settingsId + " | " + "ItemID: " + element.id + " | " +  "size: " + element.size);
         }
         return element;
       });
