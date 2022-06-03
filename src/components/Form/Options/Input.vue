@@ -1,5 +1,5 @@
 <template>
-  <div class="input">
+  <div class="input" :class="[`size--${size}`]">
     <div class="input__header" contentEditable="true">Header</div>
     <div class="input__content">
       <span class="input__content-textarea" contentEditable="true">placeholder</span>
@@ -14,6 +14,15 @@
 
 export default {
   name: "Input",
+  props: {
+    size: {
+      type: String,
+      default: "md",
+      validator(value) {
+        return ['sm', 'md', 'lg'].includes(value)
+      },
+    },
+  }
 }
 </script>
 
@@ -24,12 +33,10 @@ export default {
   gap: 16px;
 
   &__header {
-    font-size: 24px;
     font-weight: bold;
     color: #fff;
   }
   &__content {
-    width: 340px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,7 +51,6 @@ export default {
       color: #fff;
       display: flex;
       align-items: center;
-      font-size: 16px;
       height: 52px;
       width: 100%;
       opacity: 0.5;
@@ -54,13 +60,62 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
       fill: #fff;
       background-color: transparent;
       border: none;
       outline: none;
       padding: 0;
+    }
+  }
+
+  &.size {
+    &--sm .input {
+      &__header {
+        font-size: 18px;
+      }
+      &__content {
+        width: 260px;
+
+        &-textarea {
+          font-size: 14px;
+        }
+        &-icon {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+    &--md .input {
+      &__header {
+        font-size: 24px;
+      }
+      &__content {
+        width: 340px;
+
+        &-textarea {
+          font-size: 16px;
+        }
+        &-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+    &--lg .input {
+      &__header {
+        font-size: 32px;
+      }
+      &__content {
+        width: 420px;
+
+        &-textarea {
+          font-size: 18px;
+        }
+        &-icon {
+          width: 36px;
+          height: 36px;
+        }
+      }
     }
   }
 }
