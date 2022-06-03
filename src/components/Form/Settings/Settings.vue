@@ -2,7 +2,7 @@
   <div class="settings" :class="{ active : active === true}">
     <!--Text Size-->
     <div class="settings-item" v-if="selectedOption === 'Header' || 'Input'">
-      <div class="settings-item__title">Text Size</div>
+      <div class="settings-item__title">Element Size</div>
       <div class="settings-item__actions">
         <button @click="$emit('size', 'md')">Default</button>
         <button @click="$emit('size', 'lg')">Large</button>
@@ -25,9 +25,6 @@ export default {
     selectedOption: {
       type: String,
       default: "",
-      validator(value) {
-        return ['Header', 'Input', 'Textarea', 'Checkbox'].includes(value)
-      },
     },
   },
 }
